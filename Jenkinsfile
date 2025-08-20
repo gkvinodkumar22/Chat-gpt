@@ -10,7 +10,7 @@ pipeline{
     stages {
         stage('Checkout from Git'){
             steps{
-                git branch: 'master', url: 'https://github.com/vijay3639/Chat-gpt.git'
+                git branch: 'master', url: 'https://github.com/gkvinodkumar22/Chat-gpt.git'
             }
         }
         stage('Install Dependencies') {
@@ -49,8 +49,8 @@ pipeline{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
                        sh "docker build -t chatbot ."
-                       sh "docker tag chatbot vijay3639/chatbot:latest "
-                       sh "docker push vijay3639/chatbot:latest "
+                       sh "docker tag chatbot gkvinodkumar/chatbot:latest "
+                       sh "docker push gkvinodkumar/chatbot:latest "
                     }
                 }
             }
@@ -68,7 +68,7 @@ pipeline{
         }
         stage('Deploy to container'){
             steps{
-                sh 'docker run -d --name chatbot -p 3000:3000 vijay3639/chatbot:latest'
+                sh 'docker run -d --name chatbot -p 3000:3000 gkvinodkumar/chatbot:latest'
             }
         }
     }
