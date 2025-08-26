@@ -57,7 +57,7 @@ pipeline{
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image vijay3639/chatbot:latest > trivy.json"
+                sh "trivy image gkvinodkumar/chatbot:latest > trivy.json"
             }
         }
         stage ("Remove container") {
